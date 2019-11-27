@@ -18,6 +18,12 @@ namespace CdkWorkshop
             var topic = new Topic(this, "CdkWorkshopTopic");
 
             topic.AddSubscription(new SqsSubscription(queue));
+
+            new QueueRecorder(this, "QueueRecorder", new QueueRecorderProp()
+            {
+                inputQueue = queue
+            });
+
         }
     }
 }
